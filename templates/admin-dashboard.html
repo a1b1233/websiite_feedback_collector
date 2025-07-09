@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Feedbacks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <h1>Admin Dashboard - Feedback Submissions</h1>
+    <div id="feedback-list">
+
+        <div class="feedback-item">
+            <ol>
+                {% for feedback in feedback_data %}
+                <li>
+                    <strong>Name:</strong> {{ feedback.name }}
+                    <br>
+                    <br>
+                    <strong>Email:</strong> {{ feedback.email }}
+                    <br>
+                    <br>
+                    <strong>Feedback:</strong> {{ feedback.feedback }}
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                </li>
+                {% endfor %}
+            </ol>
+
+            
+        </div>
+
+    </div>
+</body>
+
+</html>

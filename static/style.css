@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(235, 224, 224, 0.737);
+}
+
+h1 {
+    text-align: center;
+    color: #282626;
+}
+
+.thank-you-container p {
+    text-align: center;
+}
+
+form,
+#feedback-list {
+    background-color: white;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 9px rgb(68, 66, 66);
+}
+
+.feedback-item {
+    margin-bottom: 15px;
+}
+
+
+input,
+textarea {
+    width: 98%;
+    padding: 4px;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.thank-you-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.thank-you-message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00698f;
+}
+
+.thank-you-text {
+    font-size: 18px;
+    color: #666;
+}
+
+.thank-you-button {
+    background-color: #00698f;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 50px 45px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* @media only screen and (max-width: 398px) {
+    .thank-you-button {
+        margin: 50px 45px;
+    }
+} */
+
+.thank-you-button:hover {
+    background-color: #0088cc;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #ccc;
+}
+
+nav .active {
+    color: #ccc;
+}

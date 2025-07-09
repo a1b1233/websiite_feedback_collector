@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <div class="thank-you-container">
+        <h1 class="thank-you-message">Thank you for your feedback!</h1>
+        <p class="thank-you-text">We appreciate your input and will use it to improve our website.</p><br>
+        <a href="{{ url_for('return_home') }}" class="thank-you-button">Return to Homepage</a>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Feedback</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('admin_login') }}">Admin Dashboard</a></li>
+        </ul>
+    </nav>
+    <h1>Website Feedback Form</h1>
+    <form action="/submit-feedback" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="feedback">Your Feedback:</label><br>
+        <textarea name="feedback" id="feedback" rows="6"></textarea><br><br>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+</body>
+
+</html>

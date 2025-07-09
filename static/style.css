@@ -72,18 +72,14 @@ button:hover {
     background-color: #00698f;
     color: #fff;
     padding: 10px 20px;
-    margin: 50px 45px;
+    margin: 50px 40px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
 }
 
-/* @media only screen and (max-width: 398px) {
-    .thank-you-button {
-        margin: 50px 45px;
-    }
-} */
+
 
 .thank-you-button:hover {
     background-color: #0088cc;

@@ -16,6 +16,7 @@ class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
+    rating = db.Column(db.String(10), nullable=False)
     feedback = db.Column(db.Text, nullable=False)
 
 with app.app_context():
@@ -30,8 +31,9 @@ def home():
 def submit_feedback():
     name = request.form["name"]
     email = request.form["email"]
+    rating = request.form["rating"]
     feedback = request.form["feedback"]
-    new_feedback = Feedback(name=name,email=email,feedback=feedback)
+    new_feedback = Feedback(name=name,email=email,rating=rating,feedback=feedback)
     db.session.add(new_feedback)
     db.session.commit()
     return redirect(url_for("thank_you"))

@@ -68,10 +68,12 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .thank-you-container {
@@ -157,3 +159,4 @@ nav a:hover {
 nav .active {
     color: #ccc;
 }
+

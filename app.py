@@ -16,8 +16,9 @@ class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
-    rating = db.Column(db.String(10), nullable=False)
+    rating = db.Column(db.String(10), nullable=False )
     feedback = db.Column(db.Text, nullable=False)
+    status = db.Column(db.String(20), default="Not Resolved")
 
 with app.app_context():
     db.create_all()
@@ -33,6 +34,7 @@ def submit_feedback():
     email = request.form["email"]
     rating = request.form["rating"]
     feedback = request.form["feedback"]
+
     new_feedback = Feedback(name=name,email=email,rating=rating,feedback=feedback)
     db.session.add(new_feedback)
     db.session.commit()
@@ -46,14 +48,40 @@ def thank_you():
 def return_home():
     return redirect(url_for("home"))
 
+@app.route("/update-status/<int:id>", methods=["POST"])
+def update_status(id):
+    new_status = request.form["status"]
+    feedback_entry = Feedback.query.get(id)
+    if feedback_entry:
+        feedback_entry.status = new_status
+        db.session.commit()
+    return redirect(url_for("admin_dashboard"))
+
+@app.route("/check-status", methods=["GET"])
+def check_status_page():
+    return render_template("check_status.html")
+
+@app.route("/check-feedback", methods=["POST"])
+def check_feedback():
+    name = request.form["name"].strip()
+    email = request.form["email"].strip()
+
+    feedback_entry = Feedback.query.filter_by(name=name, email=email).first()
+
+    if feedback_entry:
+        return render_template("feedback_status.html", feedback=feedback_entry)
+    else:
+        return render_template("feedback_status.html", feedback=None)
+    
 @app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():
+    error = None
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
         if email == "gs7august@gmail.com" and password == "8052566305":
             return redirect(url_for("admin_dashboard"))
-    return render_template("admin_login.html")
+    return render_template("admin_login.html" )
 
 @app.route("/admin-dashboard", methods=["GET"])
 def admin_dashboard():

@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Feedback</title>
+    <title>Feedback Form</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
 </head>
 
 <body>
@@ -14,7 +15,7 @@
             <li><a href="{{ url_for('admin_login') }}">Admin Dashboard</a></li>
         </ul>
     </nav>
-    <h1>Website Feedback Form</h1>
+    <h1>Share your Feedback </h1>
     <form action="/submit-feedback" method="post">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
@@ -33,12 +34,30 @@
         </select><br><br>
 
         <label for="feedback">Your Feedback:</label><br>
-        <textarea name="feedback" id="feedback" rows="6"></textarea><br><br>
+        <textarea name="feedback" id="feedback" rows="6" required></textarea><br><br>
 
         <button type="submit">Submit Feedback</button>
     </form>
 
-    
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            let emailField = document.getElementById("email");
+            let emailValue = emailField.value.trim();
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(emailValue)) {
+                e.preventDefault();
+                alert("Please enter a valid email address (e.g., user@example.com).");
+                emailField.focus();
+            }
+        });
+    </script>
+
+    <br><br>
+    <a href="{{ url_for('check_status_page') }}">
+        <center><button>Check Your Feedback Status</button></center>
+    </a>
+
 </body>
 
 </html>

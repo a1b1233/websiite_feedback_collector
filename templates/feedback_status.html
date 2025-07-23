@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    {% if feedback %}
+    <h1>Feedback Found</h1>
+    <div id="feedback-list">
+        <p><strong>Name:</strong> {{ feedback.name }}</p>
+        <p><strong>Email:</strong> {{ feedback.email }}</p>
+        <p><strong>Rating:</strong> {{ feedback.rating }}</p>
+        <p><strong>Feedback:</strong> {{ feedback.feedback }}</p>
+        <p><strong>Status:</strong> {{ feedback.status }}</p>
+        {% else %}
+        <h1>No Feedback Found</h1>
+        <p>Please check your details and try again.</p>
+        {% endif %}
+        <br>
+        <a href="{{ url_for('home') }}"><button>Back to Homepage</button></a>
+    </div>
+</body>
+
+</html>

@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
+
 <body>
-    <h1>Admin Login</h1>
+    <nav>
+        <ul>
+            <li>Admin Login</li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <br>
     <form action="" method="post">
 
         <label for="email">Email:</label><br>
@@ -18,5 +27,30 @@
 
         <button type="login">Login</button>
     </form>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault(); 
+
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            
+            const correctEmail = "gs7august@gmail.com";
+            const correctPassword = "8052566305";
+
+            if (email === "" || password === "") {
+                alert("Please enter both email and password.");
+                return;
+            }
+
+            if (email === correctEmail && password === correctPassword) {
+                this.submit();
+            } else {
+                alert("Invalid email or password.");
+            }
+        });
+    </script>
 </body>
+
 </html>

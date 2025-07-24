@@ -23,37 +23,41 @@
             color: #282626;
         }
 
-        table {
-            width: 90%;
-            margin: 0 auto;
+        .admin-table-container {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            margin: 40px auto;
+            width: 95%;
+            overflow-x: auto;
+        }
+
+        .admin-table-container table {
+            width: 100%;
             border-collapse: collapse;
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        th,
-        td {
-            padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
             font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
-        th {
-            background: #007bff;
+        .admin-table-container th {
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            font-weight: bold;
+            padding: 12px;
+            text-align: left;
         }
 
-        tr:nth-child(even) {
-            background: #f2f2f2;
+        .admin-table-container td {
+            padding: 12px;
+            border-bottom: 1px solid #ccc;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.3);
         }
 
-        tr:hover {
-            background: #e6f7ff;
+        .admin-table-container tr:hover {
+            background-color: rgba(255, 255, 255, 0.6);
         }
+
 
         form button {
             padding: 8px 12px;
@@ -104,46 +108,47 @@
 <body>
     <h1>Admin Dashboard - Feedback Submissions</h1>
 
-    <br>
-    <br>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Rating</th>
-                <th>Feedback</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for fb in feedback_data %}
-            <tr>
-                <td>{{ fb.name }}</td>
-                <td>{{ fb.email }}</td>
-                <td>{{ fb.rating }}</td>
-                <td>{{ fb.feedback }}</td>
-                <td>{{ fb.status }}</td>
-                <td>
-                    <form class="box" action="/update-status/{{ fb.id }}" method="post" style="display:inline;">
-                        {% if fb.status == "Resolved" %}
-                        <input type="hidden" name="status" value="Not Resolved">
-                        <button type="submit">Mark Not Resolved</button>
-                        {% else %}
-                        <input type="hidden" name="status" value="Resolved">
-                        <button type="submit">Mark Resolved</button>
-                        {% endif %}
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <a href="{{ url_for('home') }}">
-        <center><button>Back to Homepage</button></center>
-    </a>
+    <div class="admin-table-container">
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Rating</th>
+                    <th>Feedback</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fb in feedback_data %}
+                <tr>
+                    <td>{{ fb.name }}</td>
+                    <td>{{ fb.email }}</td>
+                    <td>{{ fb.rating }}</td>
+                    <td>{{ fb.feedback }}</td>
+                    <td>{{ fb.status }}</td>
+                    <td>
+                        <form class="box" action="/update-status/{{ fb.id }}" method="post" style="display:inline;">
+                            {% if fb.status == "Resolved" %}
+                            <input type="hidden" name="status" value="Not Resolved">
+                            <button type="submit">Mark Not Resolved</button>
+                            {% else %}
+                            <input type="hidden" name="status" value="Resolved">
+                            <button type="submit">Mark Resolved</button>
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="{{ url_for('home') }}">
+            <center><button>Back to Homepage</button></center>
+        </a>
+    </div>
 </body>
 
 </html>

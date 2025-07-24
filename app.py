@@ -98,12 +98,9 @@ def check_feedback():
     name = request.form["name"].strip()
     email = request.form["email"].strip()
 
-    feedback_entry = Feedback.query.filter_by(name=name, email=email).first()
+    feedback_entries = Feedback.query.filter_by(name=name, email=email).all()
 
-    if feedback_entry:
-        return render_template("feedback_status.html", feedback=feedback_entry)
-    else:
-        return render_template("feedback_status.html", feedback=None)
+    return render_template("feedback_status.html", feedbacks=feedback_entries)
     
 @app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():

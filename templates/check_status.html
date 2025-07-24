@@ -20,9 +20,22 @@
         <button type="submit">Check Status</button>
     </form>
     <br><br>
-    <a href="{{ url_for('home') }}"><center><button>Back to Homepage</button></center></a>
+    <a href="{{ url_for('home') }}">
+        <center><button>Back to Homepage</button></center>
+    </a>
+
+    <div id="loading-spinner" style="display: none; text-align: center;">
+        <img src="/static/spinner.gif" alt="Loading..." width="50">
+    </div>
 
     <script>
+        const form = document.querySelector("form");
+        const spinner = document.getElementById("loading-spinner");
+
+        form.addEventListener("submit", () => {
+            spinner.style.display = "block";
+        });
+
         document.querySelector("form").addEventListener("submit", function (e) {
             let emailField = document.getElementById("email");
             let emailValue = emailField.value.trim();

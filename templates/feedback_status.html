@@ -9,20 +9,25 @@
 </head>
 
 <body>
-    {% if feedback %}
-    <h1>Feedback Found</h1>
+    {% if feedbacks %}
+    <h1>Feedback Entries Found</h1>
     <div id="feedback-list">
-        <p><strong>Name:</strong> {{ feedback.name }}</p>
-        <p><strong>Email:</strong> {{ feedback.email }}</p>
-        <p><strong>Rating:</strong> {{ feedback.rating }}</p>
-        <p><strong>Feedback:</strong> {{ feedback.feedback }}</p>
-        <p><strong>Status:</strong> {{ feedback.status }}</p>
-        {% else %}
-        <h1>No Feedback Found</h1>
-        <p>Please check your details and try again.</p>
-        {% endif %}
-        <br>
-        <a href="{{ url_for('home') }}"><button>Back to Homepage</button></a>
+        {% for feedback in feedbacks %}
+            <p><strong>Name:</strong> {{ feedback.name }}</p>
+            <p><strong>Email:</strong> {{ feedback.email }}</p>
+            <p><strong>Rating:</strong> {{ feedback.rating }}</p>
+            <p><strong>Feedback:</strong> {{ feedback.feedback }}</p>
+            <p><strong>Status:</strong> {{ feedback.status }}</p>
+        <hr>
+        {% endfor %}
+    </div>
+    {% else %}
+    <h1>No Feedback Found</h1>
+    <p>Please check your details and try again.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('home') }}"><button>Back to Homepage</button></a>
     </div>
 </body>
 

@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///admins.db"
@@ -11,6 +14,25 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///feedback.db"
 app.secret_key = "1615"
 db = SQLAlchemy(app)
+
+EMAIL_ADDRESS = "gs7august2005@gmail.com"  
+EMAIL_PASSWORD = "eokn xsyv uvnw umht"      
+
+def send_email(to, subject, body):
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = to
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            server.send_message(msg)
+        print(f"Email sent to {to}")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
 
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -38,6 +60,11 @@ def submit_feedback():
     new_feedback = Feedback(name=name,email=email,rating=rating,feedback=feedback)
     db.session.add(new_feedback)
     db.session.commit()
+
+    subject = "Thank you for your feedback!"
+    body = f"Hi {name},\n\nThank you for submitting your feedback. We have received it and will get back to you soon.\n\nYour Feedback:\nRating: {rating}\nComment: {feedback}\n\nRegards,\nSupport Team"
+    send_email(email, subject, body)
+
     return redirect(url_for("thank_you"))
 
 @app.route("/thank-you", methods=["GET"])
@@ -55,6 +82,11 @@ def update_status(id):
     if feedback_entry:
         feedback_entry.status = new_status
         db.session.commit()
+
+        subject = "Your Feedback Status has been resolved"
+        body = f"Hi {feedback_entry.name},\n\nYour feedback status has been updated to '{new_status}'.\n\nThank you for your patience.\n\nRegards,\nSupport Team"
+        send_email(feedback_entry.email, subject, body)
+
     return redirect(url_for("admin_dashboard"))
 
 @app.route("/check-status", methods=["GET"])

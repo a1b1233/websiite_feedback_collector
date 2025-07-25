@@ -1,7 +1,10 @@
 body {
+    min-height: 90vh;
     background-image: url(/static/background.jpg);
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
     font-family: Arial, Helvetica, sans-serif;
     margin: 20px;

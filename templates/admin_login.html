@@ -36,16 +36,11 @@
         const form = document.querySelector("form");
         const spinner = document.getElementById("loading-spinner");
 
-        form.addEventListener("submit", () => {
-            spinner.style.display = "block";
-        });
-
-        document.querySelector("form").addEventListener("submit", function (e) {
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
 
             let email = document.getElementById("email").value.trim();
             let password = document.getElementById("password").value.trim();
-
 
             const correctEmail = "gs7august@gmail.com";
             const correctPassword = "8052566305";
@@ -56,12 +51,14 @@
             }
 
             if (email === correctEmail && password === correctPassword) {
+                spinner.style.display = "block";  // Show spinner only after validation
                 this.submit();
             } else {
                 alert("Invalid email or password.");
             }
         });
     </script>
+
 </body>
 
 </html>

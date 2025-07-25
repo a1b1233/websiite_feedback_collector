@@ -32,11 +32,7 @@
         const form = document.querySelector("form");
         const spinner = document.getElementById("loading-spinner");
 
-        form.addEventListener("submit", () => {
-            spinner.style.display = "block";
-        });
-
-        document.querySelector("form").addEventListener("submit", function (e) {
+        form.addEventListener("submit", function (e) {
             let emailField = document.getElementById("email");
             let emailValue = emailField.value.trim();
             let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,7 +41,10 @@
                 e.preventDefault();
                 alert("Please enter a valid email address (e.g., user@example.com).");
                 emailField.focus();
+                return;
             }
+
+            spinner.style.display = "block";
         });
     </script>
 </body>

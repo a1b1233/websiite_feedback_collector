@@ -35,6 +35,16 @@ project/
 ├── static/
 │   └── style.css           # Custom styles
 ├── templates/
+│   ├── admin-login.png
+|   ├──check-status.png
+│   ├── dashboard.png
+│   ├── email.png
+│   ├── feedback-status.png
+│   └── feedback-status-resolved.png 
+│   ├── homepage.png
+|   ├──resolved.png
+│   ├── thank-you.png
+├── templates/
 │   ├── admin_login.html
 |   ├──admin-dashboard.html
 │   ├── check_status.html

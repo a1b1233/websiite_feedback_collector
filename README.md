@@ -34,7 +34,7 @@ project/
 ├── app.py                  # Main Flask app
 ├── static/
 │   └── style.css           # Custom styles
-├── templates/
+├── screenshots/
 │   ├── admin-login.png
 |   ├──check-status.png
 │   ├── dashboard.png
@@ -169,5 +169,6 @@ After mark as resolved in admin dashboard, feedback status is also updated as "R
 ## 👨‍💻 Author
 
 **Gaurav Singh** – built with ❤️ and Flask.
+
 
 

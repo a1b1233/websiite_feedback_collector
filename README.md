@@ -1,6 +1,6 @@
 # 🌐 Feedback Collector Web App with Admin Dashboard
 
-A user-friendly web application built with **Flask**, **HTML/CSS**, and **SQLite** that allows users to submit feedback and enables admin to review and update feedback status via a secure dashboard. Automated email notifications are also sent during submission and resolution.
+A user-friendly web application built with **Flask**, **HTML/CSS**,**Javascript** and **SQLite** that allows users to submit feedback and enables admin to review and update feedback status via a secure dashboard. Automated email notifications are also sent during submission and resolution.
 
 ---
 
@@ -169,6 +169,7 @@ After mark as resolved in admin dashboard, feedback status is also updated as "R
 ## 👨‍💻 Author
 
 **Gaurav Singh** – built with ❤️ and Flask.
+
 
 
 
